@@ -108,7 +108,7 @@
 			$meaning = $_GET["meaning"];
 			
 			if (isset($newWord) && isset($meaning)) {
-				file_put_contents("dictionary.tsv", $newWord."\t".$meaning); ?>
+				file_put_contents("dictionary.tsv", "\n".$newWord."\t".$meaning, FILE_APPEND); ?>
 				<p>Adding a word is success!</p>
 
 			<?php }
