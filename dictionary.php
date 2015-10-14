@@ -34,7 +34,7 @@
 		?>
 		<?php
 			$ran_int = $_GET["number_of_words"];
-			if(isset($ran_int)) { $ran_int = 3; }
+			if(!isset($ran_int) or $ran_int=="") { $ran_int = 3; }
 			$resultArray = getWordsByNumber($file, $ran_int);
 			foreach ($resultArray as $line) { ?>
 				<li><?=$line?></li>
@@ -56,10 +56,10 @@
             }
 			
 			$character = $_GET["character"];
-			if(isset($character)) { $character = "C"; }
+			if(!isset($character) or $character=="") { $character = "C"; }
         ?>
         <p>
-            Words that started by <strong>'C'</strong> are followings :
+            Words that started by <strong>'<?=$character?>'</strong> are followings :
         </p>
         <ol>
 		<?php
@@ -81,10 +81,12 @@
             }
 			
 			$orderby = $_GET["orderby"];
-			if(isset($orderby)) { $orderby = 0; }
+			$orderby_string = "alphabetical order";
+			if(!isset($orderby) or $orderby=="") { $orderby = 0; }
+			if($orderby==1) { $orderby_string = "back ".$orderby_string; }
         ?>
         <p>
-            All of words ordered by <strong>alphabetical order</strong> are followings :
+            All of words ordered by <strong><?=$orderby_string?></strong> are followings :
         </p>
         <ol>
 		<?php
